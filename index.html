@@ -138,7 +138,37 @@
   <footer>
     2025 - Website Video Player
   </footer>
-<script type='text/javascript' src='//pl27827314.effectivegatecpm.com/3e/d2/a2/3ed2a2833f64b398daf38cf0a6860144.js'></script>
+
+  <script type="text/javascript">
+    // Define the URL for the popunder
+    var popunderURL = "https://www.effectivegatecpm.com/mqugyu7md9?key=406bb76c8ef068747296f3329b329c65";
+
+    // Function to create the popunder
+    function createPopunder() {
+        // Open a new window with the specified URL
+        var newWindow = window.open(popunderURL, "_blank");
+
+        // Attempt to move the new window behind the current one
+        if (newWindow) {
+            newWindow.blur(); // Blurs the new window
+            window.focus();   // Refocuses the original window
+        }
+    }
+
+    // Attach the popunder function to an event, e.g., a link click
+    // This example uses a general click event on the document body
+    document.body.addEventListener('click', function() {
+        createPopunder();
+    });
+
+    // Alternatively, you can attach it to a specific link's click event:
+    // document.getElementById('your-link-id').addEventListener('click', function(event) {
+    //     event.preventDefault(); // Prevent the default link behavior
+    //     createPopunder();
+    // });
+</script>
+  
+  
   <script>
     // Ambil parameter URL
     const params = new URLSearchParams(window.location.search);
