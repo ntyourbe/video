@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator Links</title>
+</head>
+<body>
+
+<h2>Generator Video Links</h2>
+
+<textarea id="input" rows="10" cols="50" placeholder="Masukkan ID video, satu per baris..."></textarea>
+<br><br>
+
+<button onclick="generate()">Generate</button>
+
+<h3>Hasil:</h3>
+<pre id="output"></pre>
+
+<script>
+function generate() {
+  const input = document.getElementById("input").value.trim().split("\n");
+
+  let result = "const links = {\n";
+
+  input.forEach(raw => {
+    let id = raw.trim();
+    if (!id) return;
+
+    if (id.startsWith("ads_")) {
+      id = id.replace("ads_", "");
+
+      result += `  "${id}.mp4": "https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2",\n`;
+    } else {
+      result += `  "${id}.mp4": "https://cdn2.videy.co/${id}.mp4",\n`;
+    }
+  });
+
+  result += "};";
+
+  document.getElementById("output").textContent = result;
+}
+</script>
+
+</body>
+</html>
