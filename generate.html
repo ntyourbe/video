@@ -24,11 +24,30 @@ function generate() {
 
   input.forEach(raw => {
     let id = raw.trim();
+    if (!id) return;<script>
+function cleanText(text) {
+  return text
+    .replace(/[\u200E\u200F\u202A-\u202E]/g, "") // hapus karakter aneh
+    .replace(/\s+/g, "") // hapus semua spasi tersembunyi
+    .trim();
+}
+
+function generate() {
+  const input = document.getElementById("input").value.split("\n");
+
+  let result = "const links = {\n";
+
+  input.forEach(raw => {
+    let id = cleanText(raw);
     if (!id) return;
 
-    if (id.startsWith("ads_")) {
-      id = id.replace("ads_", "");
+    // deteksi ads walaupun ada karakter aneh
+    let isAds = id.includes("ads_");
 
+    // hapus ads_ dari ID
+    id = id.replace("ads_", "");
+
+    if (isAds) {
       result += `  "${id}.mp4": "https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2",\n`;
     } else {
       result += `  "${id}.mp4": "https://cdn2.videy.co/${id}.mp4",\n`;
