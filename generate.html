@@ -13,8 +13,11 @@
 
 <button onclick="generate()">Generate</button>
 
-<h3>Hasil:</h3>
-<pre id="output"></pre>
+<h3>Hasil Links:</h3>
+<pre id="output1"></pre>
+
+<h3>Hasil CDN:</h3>
+<pre id="output2"></pre>
 
 <script>
 function generate() {
@@ -36,14 +39,12 @@ function generate() {
     let isAds = clean.includes("ads_");
     let id = clean.replace("ads_", "");
 
-    // hasil 1
     if (isAds) {
       result1 += `  "${id}.mp4": "https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2",\n`;
     } else {
       result1 += `  "${id}.mp4": "https://cdn2.videy.co/${id}.mp4",\n`;
     }
 
-    // hasil 2 (pakai .mp4)
     result2 += `https://cdn2.videoken.eu.org/${id}.mp4\n`;
   });
 
@@ -53,5 +54,6 @@ function generate() {
   document.getElementById("output2").textContent = result2;
 }
 </script>
+
 </body>
 </html>
