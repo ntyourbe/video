@@ -19,12 +19,13 @@
 <script>
 function generate() {
   const input = document.getElementById("input").value.split("\n");
-  let result = "const links = {\n";
+
+  let result1 = "const links = {\n";
+  let result2 = "";
 
   input.forEach(line => {
     if (!line) return;
 
-    // 🔥 bersihin total karakter aneh
     let clean = line
       .normalize("NFKC")
       .replace(/[^a-zA-Z0-9_]/g, "")
@@ -35,18 +36,22 @@ function generate() {
     let isAds = clean.includes("ads_");
     let id = clean.replace("ads_", "");
 
+    // hasil 1
     if (isAds) {
-      result += `  "${id}.mp4": "https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2",\n`;
+      result1 += `  "${id}.mp4": "https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2",\n`;
     } else {
-      result += `  "${id}.mp4": "https://cdn2.videy.co/${id}.mp4",\n`;
+      result1 += `  "${id}.mp4": "https://cdn2.videy.co/${id}.mp4",\n`;
     }
+
+    // hasil 2 (pakai .mp4)
+    result2 += `https://cdn2.videoken.eu.org/${id}.mp4\n`;
   });
 
-  result += "};";
+  result1 += "};";
 
-  document.getElementById("output").textContent = result;
+  document.getElementById("output1").textContent = result1;
+  document.getElementById("output2").textContent = result2;
 }
 </script>
-
 </body>
 </html>
