@@ -7,6 +7,8 @@
 <title>Click & wait... unlocking private 🔒</title>
 
 <meta property="og:title" content="Click & wait... unlocking private 🔒">
+<meta property="og:description" content="Click and wait to unlock private video">
+<meta property="og:image" content="https://videy.mvsub.eu.org/thumb.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
@@ -66,8 +68,11 @@ margin-top:20px;
 <h2>Click & wait... unlocking private 🔒</h2>
 
 <div class="thumb" onclick="startUnlock()">
+
 <video id="preview" autoplay muted loop playsinline></video>
+
 <div class="play">▶</div>
+
 </div>
 
 <div id="timer"></div>
@@ -78,16 +83,9 @@ margin-top:20px;
 
 <script>
 
-function getParam(name){
-const url = new URL(window.location.href);
-return url.searchParams.get(name);
-}
-
-let videoURL = getParam("video");
-
-if(!videoURL){
-videoURL = "video.mp4";
-}
+// ================== VIDEO LINK ==================
+let videoURL = "https://cdn2.videy.co/vygRdQks1.mp4";
+// ================================================
 
 document.getElementById("preview").innerHTML =
 '<source src="'+videoURL+'" type="video/mp4">';
@@ -104,7 +102,7 @@ let timer = document.getElementById("timer");
 
 let countdown = setInterval(function(){
 
-timer.innerHTML = "Unlocking video in "+time+" seconds...";
+timer.innerHTML="Unlocking video in "+time+" seconds...";
 
 time--;
 
@@ -112,9 +110,9 @@ if(time < 0){
 
 clearInterval(countdown);
 
-timer.innerHTML = "Video unlocked 🔓";
+timer.innerHTML="Video unlocked 🔓";
 
-let v = document.getElementById("player");
+let v=document.getElementById("player");
 
 v.style.display="block";
 
