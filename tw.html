@@ -6,9 +6,10 @@
 
 <title>Click & wait... unlocking private 🔒</title>
 
+<!-- Twitter preview -->
 <meta property="og:title" content="Click & wait... unlocking private 🔒">
-<meta property="og:description" content="Click and wait to unlock private video">
-<meta property="og:image" content="https://videy.mvsub.eu.org/thumb.jpg">
+<meta property="og:description" content="Watch the full video">
+<meta property="og:image" content="https://videy.mvsub.eu.org/thumb.gif">
 <meta name="twitter:card" content="summary_large_image">
 
 <style>
@@ -27,12 +28,12 @@ margin:auto;
 padding:20px;
 }
 
-.thumb{
+.player{
 position:relative;
 cursor:pointer;
 }
 
-.thumb video{
+.player img{
 width:100%;
 border-radius:12px;
 }
@@ -47,15 +48,26 @@ color:white;
 text-shadow:0 0 20px black;
 }
 
+.duration{
+position:absolute;
+bottom:10px;
+right:10px;
+background:rgba(0,0,0,0.7);
+padding:3px 6px;
+font-size:14px;
+border-radius:4px;
+}
+
 #timer{
 margin-top:20px;
 font-size:20px;
 }
 
-#player{
+video{
 display:none;
 width:100%;
 margin-top:20px;
+border-radius:10px;
 }
 
 </style>
@@ -67,36 +79,29 @@ margin-top:20px;
 
 <h2>Click & wait... unlocking private 🔒</h2>
 
-<div class="thumb" onclick="startUnlock()">
+<div class="player" onclick="startUnlock()">
 
-<video id="preview" autoplay muted loop playsinline></video>
+<img src="thumb.gif">
 
 <div class="play">▶</div>
+
+<div class="duration">46:03</div>
 
 </div>
 
 <div id="timer"></div>
 
-<video id="player" controls></video>
+<video id="player" controls>
+<source src="video.mp4" type="video/mp4">
+</video>
 
 </div>
 
 <script>
 
-// ================== VIDEO LINK ==================
-let videoURL = "https://cdn2.videy.co/vygRdQks1.mp4";
-// ================================================
-
-document.getElementById("preview").innerHTML =
-'<source src="'+videoURL+'" type="video/mp4">';
-
-document.getElementById("player").innerHTML =
-'<source src="'+videoURL+'" type="video/mp4">';
-
-
 function startUnlock(){
 
-let time = 10;
+let time = 8;
 
 let timer = document.getElementById("timer");
 
@@ -106,7 +111,7 @@ timer.innerHTML="Unlocking video in "+time+" seconds...";
 
 time--;
 
-if(time < 0){
+if(time<0){
 
 clearInterval(countdown);
 
