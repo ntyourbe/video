@@ -9,15 +9,15 @@
 <!-- Open Graph -->
 <meta property="og:title" content="Click & wait... unlocking private 🔒">
 <meta property="og:description" content="Watch the full video">
-<meta property="og:image" content="https://videy.mvsub.eu.org/intan.gif">
-<meta property="og:url" content="https://videy.mvsub.eu.org/intan.html">
+<meta property="og:image" content="/intan.jpg">
+<meta property="og:url" content="/ads.html">
 <meta property="og:type" content="website">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Click & wait... unlocking private 🔒">
 <meta name="twitter:description" content="Watch the full video">
-<meta name="twitter:image" content="https://videy.mvsub.eu.org/intan.gif">
+<meta name="twitter:image" content="/intan.jpg">
 
 <style>
 
@@ -60,21 +60,9 @@ position:absolute;
 bottom:10px;
 right:10px;
 background:rgba(0,0,0,0.7);
-padding:3px 6px;
+padding:4px 7px;
 font-size:14px;
 border-radius:4px;
-}
-
-#timer{
-margin-top:20px;
-font-size:20px;
-}
-
-video{
-display:none;
-width:100%;
-margin-top:20px;
-border-radius:10px;
 }
 
 </style>
@@ -86,9 +74,9 @@ border-radius:10px;
 
 <h2>Click & wait... unlocking private 🔒</h2>
 
-<div class="player" onclick="startUnlock()">
+<div class="player" onclick="goAd()">
 
-<img id="thumb">
+<img src="thumb.jpg">
 
 <div class="play">▶</div>
 
@@ -96,57 +84,14 @@ border-radius:10px;
 
 </div>
 
-<div id="timer"></div>
-
-<video id="player" controls></video>
-
 </div>
 
 <script>
 
-// ============================
-// CONFIG
-// ============================
+function goAd(){
 
-let videoURL = "https://cdn2.videy.co/vygRdQks1.mp4";
-
-let thumbURL = "https://videy.mvsub.eu.org/intan.gif";
-
-// ============================
-
-document.getElementById("thumb").src = thumbURL;
-
-document.getElementById("player").innerHTML =
-'<source src="'+videoURL+'" type="video/mp4">';
-
-
-function startUnlock(){
-
-let time = 8;
-
-let timer = document.getElementById("timer");
-
-let countdown = setInterval(function(){
-
-timer.innerHTML="Unlocking video in "+time+" seconds...";
-
-time--;
-
-if(time < 0){
-
-clearInterval(countdown);
-
-timer.innerHTML="Video unlocked 🔓";
-
-let v=document.getElementById("player");
-
-v.style.display="block";
-
-v.play();
-
-}
-
-},1000);
+// redirect ke iklan
+window.location.href = "https://link-iklanmu.com";
 
 }
 
