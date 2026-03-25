@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Videy Player</title>
+
+<style>
+
+body{
+margin:0;
+background:#f1f1f1;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
+background:white;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.upload{
+background:#111827;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:25px;
+font-weight:bold;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:500px;
+margin:auto;
+padding:10px;
+}
+
+/* VIDEO */
+
+.video-wrapper{
+position:relative;
+background:black;
+border-radius:8px;
+overflow:hidden;
+}
+
+video{
+width:100%;
+display:block;
+}
+
+/* PLAY BUTTON */
+
+.playbtn{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:80px;
+height:80px;
+background:rgba(255,255,255,0.8);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+}
+
+.playbtn:after{
+content:"▶";
+font-size:30px;
+margin-left:5px;
+}
+
+/* SHARE */
+
+.sharebox{
+margin-top:20px;
+text-align:center;
+}
+
+.sharebtn{
+background:#e5e7eb;
+border:none;
+padding:12px 35px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<div class="logo">videy</div>
+<button class="upload">Upload</button>
+</div>
+
+<div class="container">
+
+<div class="video-wrapper">
+
+<video id="video"></video>
+
+<div class="playbtn" onclick="playVideo()" id="play"></div>
+
+</div>
+
+<div class="sharebox">
+<button class="sharebtn" onclick="shareVideo()">Share video</button>
+</div>
+
+</div>
+
+<script>
+
+/* AMBIL URL VIDEO */
+
+const params = new URLSearchParams(window.location.search);
+const videoURL = params.get("url");
+
+const video = document.getElementById("url");
+
+if(videoURL){
+
+video.src = videoURL;
+
+}else{
+
+document.body.innerHTML="<h2 style='text-align:center;margin-top:100px'>Video tidak ditemukan</h2>";
+
+}
+
+/* PLAY */
+
+function playVideo(){
+
+video.play();
+video.controls = true;
+
+document.getElementById("play").style.display="none";
+
+}
+
+/* SHARE */
+
+function shareVideo(){
+
+if(navigator.share){
+
+navigator.share({
+title:"Video",
+url:window.location.href
+});
+
+}else{
+
+prompt("Copy link:",window.location.href);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
