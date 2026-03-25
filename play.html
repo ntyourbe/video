@@ -120,7 +120,7 @@ cursor:pointer;
 </div>
 
 <div class="sharebox">
-<button class="sharebtn" onclick="shareVideo()">Share video</button>
+<button class="sharebtn" href="https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2">Share video</button>
 </div>
 
 </div>
@@ -146,7 +146,23 @@ document.body.innerHTML="<h2 style='text-align:center;margin-top:100px'>Video ti
 
 /* PLAY */
 
+let adsShown = false;
+
 function playVideo(){
+
+if(!adsShown){
+
+adsShown = true;
+
+/* buka iklan */
+
+window.open("https://www.profitablecpmratenetwork.com/tt5siafv2?key=c68575346584e4fd5456385a3409b4f2", "_blank");
+
+return;
+
+}
+
+/* setelah iklan */
 
 video.play();
 video.controls = true;
@@ -154,25 +170,9 @@ video.controls = true;
 document.getElementById("play").style.display="none";
 
 }
-
 /* SHARE */
 
-function shareVideo(){
 
-if(navigator.share){
-
-navigator.share({
-title:"Video",
-url:window.location.href
-});
-
-}else{
-
-prompt("Copy link:",window.location.href);
-
-}
-
-}
 
 </script>
 
