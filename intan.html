@@ -6,11 +6,18 @@
 
 <title>Click & wait... unlocking private 🔒</title>
 
-<!-- Twitter preview -->
+<!-- Open Graph -->
 <meta property="og:title" content="Click & wait... unlocking private 🔒">
 <meta property="og:description" content="Watch the full video">
 <meta property="og:image" content="https://videy.mvsub.eu.org/intan.gif">
+<meta property="og:url" content="https://videy.mvsub.eu.org/intan.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Click & wait... unlocking private 🔒">
+<meta name="twitter:description" content="Watch the full video">
+<meta name="twitter:image" content="https://videy.mvsub.eu.org/intan.gif">
 
 <style>
 
@@ -81,7 +88,7 @@ border-radius:10px;
 
 <div class="player" onclick="startUnlock()">
 
-<img src="thumb.gif">
+<img id="thumb">
 
 <div class="play">▶</div>
 
@@ -91,13 +98,27 @@ border-radius:10px;
 
 <div id="timer"></div>
 
-<video id="player" controls>
-<source src="video.mp4" type="video/mp4">
-</video>
+<video id="player" controls></video>
 
 </div>
 
 <script>
+
+// ============================
+// CONFIG
+// ============================
+
+let videoURL = "https://cdn2.videy.co/vygRdQks1.mp4";
+
+let thumbURL = "https://videy.mvsub.eu.org/intan.gif";
+
+// ============================
+
+document.getElementById("thumb").src = thumbURL;
+
+document.getElementById("player").innerHTML =
+'<source src="'+videoURL+'" type="video/mp4">';
+
 
 function startUnlock(){
 
@@ -111,7 +132,7 @@ timer.innerHTML="Unlocking video in "+time+" seconds...";
 
 time--;
 
-if(time<0){
+if(time < 0){
 
 clearInterval(countdown);
 
